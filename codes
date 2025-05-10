@@ -1,0 +1,11 @@
+  # Check for missing values
+print(data.isnull().sum())
+# Split data into features and target
+X = data.drop('Outcome', axis=1)  # Features
+y = data['Outcome']  # Target
+# Split the data into training and testing sets (80% training, 20% testing)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+# Standardize the features using StandardScaler
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
